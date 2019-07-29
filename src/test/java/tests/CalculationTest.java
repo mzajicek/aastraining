@@ -1,24 +1,13 @@
 package tests;
 
-import org.junit.After;
+import base.TestBase;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 
-public class CalculationTest {
+public class CalculationTest extends TestBase {
 
-    WebDriver driver; //premenna driver
-
-    @Before
-    public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "chromedriver.exe");
-        driver = new ChromeDriver();
-        driver.get("http://localhost/savingscalculator.php");
-    }
 
     @Test
     public void ifShouldCalculateTotalIncome() {
@@ -78,6 +67,8 @@ public class CalculationTest {
             Assert.assertTrue(getTotalIncome().contains("kr"));
         }
     }
+
+
     private String getTotalIncome(){
         return driver.findElement(By.cssSelector("div.result > div:nth-child(1) > p")).getText();
     }
@@ -110,9 +101,5 @@ public class CalculationTest {
     }
 
 
-    @After
-    public void tearDown() {
-        driver.close();
-        driver.quit();
-    }
+
 }
