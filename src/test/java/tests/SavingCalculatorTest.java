@@ -34,7 +34,7 @@ public class SavingCalculatorTest {
     }
 
     @Test
-    public void itShouldEnableApplyButton(){
+    public void itShouldEnableApplyButton() {
         //1. Vybrat fond
         new Select(driver.findElement(By.id("fundSelect"))).selectByVisibleText("Batman's Cave Development");
 
@@ -46,7 +46,17 @@ public class SavingCalculatorTest {
         driver.findElement(By.id("emailInput")).sendKeys("info@test.sk");
         //5. Overit button
         Assert.assertTrue(driver.findElement(By.cssSelector("button.btn-block")).isEnabled());
+    }
 
+    @Test
+    public void itShouldNotSelectAnyFundOnPageOpen() {
+        //new Select(driver.findElement(By.id("fundSelect"))).getFirstSelectedOption().getText();
+        //System.out.println(new Select(driver.findElement(By.id("fundSelect"))).getFirstSelectedOption().getText());
+
+        Assert.assertEquals(
+                "Select your fund",
+                new Select(driver.findElement(By.id("fundSelect"))).getFirstSelectedOption().getText()
+        );
     }
 
     @After
