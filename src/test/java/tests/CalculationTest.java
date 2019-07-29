@@ -21,7 +21,7 @@ public class CalculationTest {
     }
 
     @Test
-    public void ifShouldCalculateTotalIncome(){
+    public void ifShouldCalculateTotalIncome() {
         //1. vybrat fond, zadat sumu, roky, email
         new Select(driver.findElement(By.id("fundSelect"))).selectByVisibleText("Batman's Cave Development");
         driver.findElement(By.id("oneTimeInvestmentInput")).sendKeys("1000");
@@ -30,10 +30,11 @@ public class CalculationTest {
         //2. overit, ze Total Income nie je prazdny
         //driver.findElement(By.cssSelector("div.result > div:nth-child(1) > p")).getText();
         Assert.assertFalse(driver.findElement(By.cssSelector("div.result > div:nth-child(1) > p")).getText().isEmpty());
+        Assert.assertTrue(driver.findElement(By.cssSelector("div.result > div:nth-child(1) > p")).getText().contains("kr"));
     }
 
     @Test
-    public void ifShouldCalculateInterestIncome(){
+    public void ifShouldCalculateInterestIncome() {
         //1. vybrat fond, zadat sumu, roky, email
         new Select(driver.findElement(By.id("fundSelect"))).selectByVisibleText("Batman's Cave Development");
         driver.findElement(By.id("oneTimeInvestmentInput")).sendKeys("1000");
@@ -42,10 +43,11 @@ public class CalculationTest {
         //2. overit, ze Interest Income nie je prazdny
         //driver.findElement(By.cssSelector("div.result > div:nth-child(2) > p")).getText();
         Assert.assertFalse(driver.findElement(By.cssSelector("div.result > div:nth-child(2) > p")).getText().isEmpty());
+        Assert.assertTrue(driver.findElement(By.cssSelector("div.result > div:nth-child(2) > p")).getText().contains("kr"));
     }
 
     @Test
-    public void ifShouldCalculateRisk(){
+    public void ifShouldCalculateRisk() {
         //1. vybrat fond, zadat sumu, roky, email
         new Select(driver.findElement(By.id("fundSelect"))).selectByVisibleText("Batman's Cave Development");
         driver.findElement(By.id("oneTimeInvestmentInput")).sendKeys("1000");

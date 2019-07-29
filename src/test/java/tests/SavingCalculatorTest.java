@@ -21,6 +21,7 @@ public class SavingCalculatorTest {
         driver.get("http://localhost/savingscalculator.php");
     }
 
+
     @Test
     public void itShouldDisplayTitle() {
         Assert.assertEquals("Savings Calculator", driver.findElement(By.cssSelector("h1")).getText());
@@ -58,10 +59,11 @@ public class SavingCalculatorTest {
                 new Select(driver.findElement(By.id("fundSelect"))).getFirstSelectedOption().getText()
         );
     }
-
     @After
     public void tearDown() {
         driver.close();
         driver.quit();
     }
+
+
 }
