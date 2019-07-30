@@ -47,6 +47,9 @@ public class NewSavingRequestTest extends TestBase {
         //vytvorit novy saving request
         calculatorPage.submitRequest();
         //pomocou cssSelector
+
+
+
         Assert.assertEquals(vFund,
                 driver.findElement(By.cssSelector("ul.saving-list > li > div.saving-detail"))
                         .findElement(By.cssSelector("p.fund-description")).getText());
@@ -58,6 +61,14 @@ public class NewSavingRequestTest extends TestBase {
         //pomocou xpath test
         Assert.assertEquals(vFund,
                 driver.findElement(By.xpath("//ul[contains(@class,'saving-list')]/li//div/p[contains(@class,'fund-description')]")).getText());
+
+        //ulozit zo stranky do premenej
+        String displayedFund = driver.findElement(By.cssSelector("ul.saving-list > li > div.saving-detail"))
+                .findElement(By.cssSelector("p.fund-description")).getText();
+
+        Assert.assertEquals(vFund,displayedFund);
+
+
     }
 
 }
