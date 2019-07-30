@@ -79,8 +79,4 @@ public class CalculationTest extends TestBase {
     }
 
 
-
-
-
-
 }
