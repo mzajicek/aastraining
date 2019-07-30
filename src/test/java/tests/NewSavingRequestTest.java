@@ -32,4 +32,32 @@ public class NewSavingRequestTest extends TestBase {
                 driver.findElement(By.cssSelector("ul.saving-list > li div.amounts > p > span")).getText());
 
     }
+
+    @Test
+    public void itShouldDisplayFundInNewRequest() {
+        String vFund = "Batman's Cave Development";
+        CalculatorPage calculatorPage = new CalculatorPage(driver);
+        calculatorPage.selectFund(vFund);
+        calculatorPage.selectInvestment("1000");
+        calculatorPage.selectYears("5");
+        calculatorPage.selectEmail("test@test.sk");
+
+        //precitat zo stranky total income
+        String calculatedIncome = calculatorPage.getTotalIncome();
+        //vytvorit novy saving request
+        calculatorPage.submitRequest();
+        //pomocou cssSelector
+        Assert.assertEquals(vFund,
+                driver.findElement(By.cssSelector("ul.saving-list > li > div.saving-detail"))
+                        .findElement(By.cssSelector("p.fund-description")).getText());
+
+        //pomocou cssSelectoru, zamerane iba na konkretnu triedu
+        Assert.assertEquals(vFund,
+                driver.findElement(By.cssSelector("p.fund-description")).getText());
+
+        //pomocou xpath test
+        Assert.assertEquals(vFund,
+                driver.findElement(By.xpath("//ul[contains(@class,'saving-list')]/li//div/p[contains(@class,'fund-description')]")).getText());
+    }
+
 }
