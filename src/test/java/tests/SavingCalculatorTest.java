@@ -6,6 +6,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
+import pages.CalculatorPage;
 
 public class SavingCalculatorTest extends TestBase {
 
@@ -23,9 +24,18 @@ public class SavingCalculatorTest extends TestBase {
 
     @Test
     public void itShouldEnableApplyButton() {
-        //1. Vybrat fond
-        new Select(driver.findElement(By.id("fundSelect"))).selectByVisibleText("Batman's Cave Development");
 
+        CalculatorPage calculatorPage = new CalculatorPage(driver);
+        calculatorPage.selectFund("Batman's Cave Development");
+        calculatorPage.selectInvestment("1000");
+        calculatorPage.selectYears("5");
+        calculatorPage.selectEmail("test@test.sk");
+        //5. Overit button
+        Assert.assertTrue(driver.findElement(By.cssSelector("button.btn-block")).isEnabled());
+
+/* Stary sposob bez pouzitia metod
+       //1. Vybrat fond
+        //new Select(driver.findElement(By.id("fundSelect"))).selectByVisibleText("Batman's Cave Development");
         //2. Zadat sumu
         driver.findElement(By.id("oneTimeInvestmentInput")).sendKeys("1000");
         //3. Zadat pocet rokov
@@ -34,17 +44,22 @@ public class SavingCalculatorTest extends TestBase {
         driver.findElement(By.id("emailInput")).sendKeys("info@test.sk");
         //5. Overit button
         Assert.assertTrue(driver.findElement(By.cssSelector("button.btn-block")).isEnabled());
+*/
+
     }
+
 
     @Test
     public void itShouldNotSelectAnyFundOnPageOpen() {
         //new Select(driver.findElement(By.id("fundSelect"))).getFirstSelectedOption().getText();
         //System.out.println(new Select(driver.findElement(By.id("fundSelect"))).getFirstSelectedOption().getText());
 
+
         Assert.assertEquals(
                 "Select your fund",
                 new Select(driver.findElement(By.id("fundSelect"))).getFirstSelectedOption().getText()
         );
+
     }
 
 }
