@@ -73,5 +73,21 @@ public class NewSavingRequestTest extends TestBase {
 
     }
 
+    @Test
+    public void itShouldDisplayTwentyRequests() {
+        CalculatorPage calculatorPage = new CalculatorPage(driver);
 
+
+        for (int i = 0; i < 20; i++) {
+            calculatorPage.selectFund("Batman's Cave Development");
+            calculatorPage.selectInvestment("1000");
+            calculatorPage.selectYears("5");
+            calculatorPage.selectEmail("test@test.sk");
+            //submit
+            calculatorPage.submitRequest();
+        }
+
+        Assert.assertEquals(20,driver.findElements(By.cssSelector("ul.saving-list > li > div.saving-detail")).size());
+
+    }
 }

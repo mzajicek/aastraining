@@ -5,7 +5,9 @@ import base.TestBase;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.CalculatorPage;
 
 public class SavingCalculatorTest extends TestBase {
@@ -61,4 +63,16 @@ public class SavingCalculatorTest extends TestBase {
         );
 
     }
+
+
+    /* Nedokoncene cakanie na nacitanie
+    @Test
+    public void itShouldWaitUntilTitleIsVisible() throws InterruptedException {
+        try {
+            new WebDriverWait(driver, 2)
+                    .until()
+        }
+    }
+
+     */
 }
