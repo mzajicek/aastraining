@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.Select;
 import pages.CalculatorPage;
+import utils.MathUtils;
 
 public class SavingCalculatorTest extends TestBase {
 
@@ -62,8 +63,16 @@ public class SavingCalculatorTest extends TestBase {
 
     }
 
-
-
+    @Test
+    public void selectRandomFund() {
+        CalculatorPage calculatorPage = new CalculatorPage(driver);
+        calculatorPage.enterRandomFund();
+        calculatorPage.selectInvestment("1000");
+        calculatorPage.selectYears("5");
+        calculatorPage.selectEmail("test@test.sk");
+        //5. Overit button
+        Assert.assertTrue(driver.findElement(By.cssSelector("button.btn-block")).isEnabled());
+    }
 
     /* Nedokoncene cakanie na nacitanie
     @Test
@@ -75,4 +84,5 @@ public class SavingCalculatorTest extends TestBase {
     }
 
      */
+
 }
