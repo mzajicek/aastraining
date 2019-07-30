@@ -4,8 +4,8 @@ import base.TestBase;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import pages.CalculatorPage;
+import utils.MathUtils;
 
 public class NewSavingRequestTest extends TestBase {
 
@@ -80,8 +80,8 @@ public class NewSavingRequestTest extends TestBase {
 
         for (int i = 0; i < 20; i++) {
             calculatorPage.selectFund("Batman's Cave Development");
-            calculatorPage.selectInvestment("1000");
-            calculatorPage.selectYears("5");
+            calculatorPage.selectInvestment(String.valueOf(MathUtils.getRandomNumberInRange(1000,10000)));
+            calculatorPage.selectYears(String.valueOf(MathUtils.getRandomNumberInRange(1,10)));
             calculatorPage.selectEmail("test@test.sk");
             //submit
             calculatorPage.submitRequest();
@@ -90,4 +90,5 @@ public class NewSavingRequestTest extends TestBase {
         Assert.assertEquals(20,driver.findElements(By.cssSelector("ul.saving-list > li > div.saving-detail")).size());
 
     }
+
 }
