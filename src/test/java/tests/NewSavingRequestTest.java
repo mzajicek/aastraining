@@ -24,5 +24,7 @@ public class NewSavingRequestTest extends TestBase {
         System.out.println(driver.findElement(By.xpath("//ul[contains(@class,'saving-list')]/li//div[contains(@class,'amounts')]/p/span")).getText());
         Assert.assertEquals(calculatedIncome,
                 driver.findElement(By.xpath("//ul[contains(@class,'saving-list')]/li//div[contains(@class,'amounts')]/p/span")).getText());
+
+
     }
 }
