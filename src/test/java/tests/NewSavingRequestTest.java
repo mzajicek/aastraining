@@ -52,8 +52,6 @@ public class NewSavingRequestTest extends TestBase {
         calculatorPage.submitRequest();
         //pomocou cssSelector
 
-
-
         Assert.assertEquals(vFund,
                 calculatorPage.getFirstSavingDetail()
                         .findElement(By.cssSelector("p.fund-description")).getText());
