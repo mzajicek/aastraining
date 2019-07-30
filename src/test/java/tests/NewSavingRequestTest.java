@@ -4,6 +4,7 @@ import base.TestBase;
 import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import pages.CalculatorPage;
 
 public class NewSavingRequestTest extends TestBase {
@@ -31,6 +32,9 @@ public class NewSavingRequestTest extends TestBase {
         Assert.assertEquals(calculatedIncome,
                 driver.findElement(By.cssSelector("ul.saving-list > li div.amounts > p > span")).getText());
 
+        System.out.println(driver.findElement(By.cssSelector("ul.saving-list > li > div.saving-detail"))
+                .findElement(By.cssSelector("li div.amounts > p > span")).getText());
+
     }
 
     @Test
@@ -51,7 +55,7 @@ public class NewSavingRequestTest extends TestBase {
 
 
         Assert.assertEquals(vFund,
-                driver.findElement(By.cssSelector("ul.saving-list > li > div.saving-detail"))
+                calculatorPage.getFirstSavingDetail()
                         .findElement(By.cssSelector("p.fund-description")).getText());
 
         //pomocou cssSelectoru, zamerane iba na konkretnu triedu
@@ -63,12 +67,13 @@ public class NewSavingRequestTest extends TestBase {
                 driver.findElement(By.xpath("//ul[contains(@class,'saving-list')]/li//div/p[contains(@class,'fund-description')]")).getText());
 
         //ulozit zo stranky do premenej
-        String displayedFund = driver.findElement(By.cssSelector("ul.saving-list > li > div.saving-detail"))
+        String displayedFund = calculatorPage.getFirstSavingDetail()
                 .findElement(By.cssSelector("p.fund-description")).getText();
 
         Assert.assertEquals(vFund,displayedFund);
 
 
     }
+
 
 }
